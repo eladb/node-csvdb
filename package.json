@@ -16,5 +16,8 @@
       "csv": "0.0.13"
   },
   "devDependencies": {},
-  "optionalDependencies": {}
+  "optionalDependencies": {},
+  "scripts": {
+      "test": "node test"
+  }
 }
