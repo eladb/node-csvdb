@@ -1,7 +1,76 @@
 # csvdb
 
-Read-only object store based on text/csv documents from the web.
-Can be used, for example, to use Google Spreadsheets as a source database.
+Read-only object store for small scale datasets based on text/csv documents from the web.
+Can be used, for example, to use Google Spreadsheets as a simple data source for small (I would say up too 500 entries) datasets.
+
+__Maturity__: in development
+
+csvdb sends an HTTP GET to the specified URL and parses the resulting csv as if each row is an object. The header line is used to name the object's
+fields. If a `key` column is provided, csvdb will return a hash (keyed by the value in the `key` column). If not, it will just return an array.
+
+There is naive type inference (strings, numbers and time).
+
+TODO:
+ - Paging
+ - ?
+
+For example, the following data source is based on a published Google Spreadsheets document:
+
+```bash
+$ curl -i 'https://docs.google.com/spreadsheet/pub?key=0AuP9sJn-WbrXdFJzTUN0RXdvUXg2YlVuMnBJRFozTmc&output=csv'
+HTTP/1.1 200 OK
+Content-Type: text/csv; charset=UTF-8
+X-Robots-Tag: noindex, nofollow, nosnippet
+Content-Disposition: attachment; filename="csvdb-test.csv"
+Date: Wed, 13 Jun 2012 22:34:23 GMT
+Expires: Wed, 13 Jun 2012 22:34:23 GMT
+Cache-Control: private, max-age=0
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Server: GSE
+Transfer-Encoding: chunked
+
+key,first,last,phone,email,enabled,update-time
+key1,elad,benisrael,387383833,elad.benisrael@gmail.com,TRUE,12/3/2011
+key2,first2,last2-changed,654321,email2,TRUE,1/28/1980
+key3,first3,another last,phone3,email3-update1,FALSE,3/23/2011 23:30:00eladb@eladb-2:~ $ 
+```
+
+This is how csvdb sees it:
+
+```node.js
+$ node
+> var csvdb = require('csvdb')
+> var db = csvdb('https://docs.google.com/spreadsheet/pub?key=0AuP9sJn-WbrXdFJzTUN0RXdvUXg2YlVuMnBJRFozTmc&output=csv', { autofetch: 5000 })
+> db.entries
+{ key1: 
+   { first: 'elad',
+     last: 'benisrael',
+     phone: 387383833,
+     email: 'elad.benisrael@gmail.com',
+     enabled: true,
+     'update-time': Fri, 02 Dec 2011 22:00:00 GMT },
+  key2: 
+   { first: 'first2',
+     last: 'last2-changed',
+     phone: 654321,
+     email: 'email2',
+     enabled: true,
+     'update-time': Sun, 27 Jan 1980 22:00:00 GMT },
+  key3: 
+   { first: 'first3',
+     last: 'another last',
+     phone: 'phone3',
+     email: 'email3-update1',
+     enabled: false,
+     'update-time': Wed, 23 Mar 2011 21:30:00 GMT } }
+> 
+```
+
+Since `{ autofetch: 5000 }` is provided, `db.entries` will be refreshed every 5 seconds, so if one changes the data 
+source (in this case, just edits the spreadsheet), it will be quickly reflected in `db.entries`.
+
+See a few more examples below.
 
 ## API
 
