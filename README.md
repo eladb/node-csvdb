@@ -1,5 +1,7 @@
 # csvdb
 
+[![Build Status](https://secure.travis-ci.org/eladb/node-csvdb.png?branch=master)](http://travis-ci.org/eladb/node-csvdb)
+
 Read-only object store for small scale datasets based on text/csv documents from the web.
 Can be used, for example, to use Google Spreadsheets as a simple data source for small (I would say up too 500 entries) datasets.
 
