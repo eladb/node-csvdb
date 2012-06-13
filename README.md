@@ -40,7 +40,7 @@ key3,first3,another last,phone3,email3-update1,FALSE,3/23/2011 23:30:00eladb@ela
 
 This is how csvdb sees it:
 
-```node.js
+```javascript
 $ node
 > var csvdb = require('csvdb')
 > var db = csvdb('https://docs.google.com/spreadsheet/pub?key=0AuP9sJn-WbrXdFJzTUN0RXdvUXg2YlVuMnBJRFozTmc&output=csv', { autofetch: 5000 })
