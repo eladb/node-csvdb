@@ -5,7 +5,7 @@
 Read-only object store for small scale datasets based on text/csv documents from the web.
 Can be used, for example, to use Google Spreadsheets as a simple data source for small (I would say up too 500 entries) datasets.
 
-__Maturity__: in development
+[__Stability__](http://nodejs.org/docs/latest/api/all.html#all_stability_index): 3 - Stable
 
 csvdb sends an HTTP GET to the specified URL and parses the resulting csv as if each row is an object. The header line is used to name the object's
 fields. If a `key` column is provided, csvdb will return a hash (keyed by the value in the `key` column). If not, it will just return an array.
