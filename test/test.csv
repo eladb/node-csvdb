@@ -1,4 +1,4 @@
 key,first,last,phone,email,enabled,update-time
 key1,elad,benisrael,387383833,elad.benisrael@gmail.com,TRUE,12/3/2011
-key2,first2,last2-changed,654321,email2,TRUE,1/28/1980
+,first2,last2-changed,654321,email2,TRUE,1/28/1980
 key3,first3,another last,phone3,email3-update1,FALSE,3/23/2011 23:30:00

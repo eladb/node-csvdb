@@ -12,11 +12,11 @@ var db = csvdb(tmpfile, { autofetch: 1000 });
 db.once('fetch', function() {
   // at this point we should have some data (one could also listen the 'fetch' event).
   assert(db.entries);
-  assert.equal(Object.keys(db.entries).length, 3);
+  assert.equal(Object.keys(db.entries).length, 2);
 
   db.once('fetch', function() {
     assert(db.entries);
-    assert.equal(Object.keys(db.entries).length, 4);
+    assert.equal(Object.keys(db.entries).length, 3);
     db.stop();
   });
 
