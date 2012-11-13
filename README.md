@@ -10,11 +10,11 @@ Can be used, for example, to use Google Spreadsheets as a simple data source for
 csvdb sends an HTTP GET to the specified URL and parses the resulting csv as if each row is an object. The header line is used to name the object's
 fields. If a `key` column is provided, csvdb will return a hash (keyed by the value in the `key` column). If not, it will just return an array.
 
-There is naive type inference (strings, numbers and time).
+csvdb uses [inferify](https://npmjs.org/package/inferify) to infer the data type of each column.
 
 TODO:
- - Paging
- - ?
+ - Support large datasets using paging
+ - Any other suggestions?
 
 For example, the following data source is based on a published Google Spreadsheets document:
 
@@ -129,13 +129,14 @@ setInterval(function() {
 }, 5000);
 ```
 
-## Types
+## Contributors
 
-csvdb has some type inference logic:
+ * [avnerner](https://npmjs.org/~avnerner)
+ * [eladb](https://npmjs.org/~eladb)
 
- * If there is a column named `key`, the resultset will be a hash keyed by `key`. Note that duplicate keys _will_ override.
- * If the column name has the string `-time` in it, it will be `Date.parse`d.
- * If the value can be parsed as an integer, it will be.
+## Changelog
+
+ * 0.0.6 - Integrate with inferify for intelligent type inference.
 
 ## The MIT License
 
