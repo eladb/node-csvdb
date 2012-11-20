@@ -116,6 +116,15 @@ db.on('fetch', function() {
 });
 ```
 
+### Encoding
+
+`options.encoding` may be used to override the default encoding used
+by `http.request`. The default is `utf8`.
+
+```js
+csvdb(url, { encoding: 'ascii' });
+```
+
 ### Behind-the-scenes update
 
 `db.entries` can be used to access the last resultset at any given moment. Please make sure to prepare for a `null` if there is no data yet.

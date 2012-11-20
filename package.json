@@ -2,7 +2,7 @@
   "author": "Elad Ben-Israel <elad.benisrael@gmail.com> (http://hackingonstuff.net)",
   "name": "csvdb",
   "description": "Read-only document store based on a text/csv documents. Can be used, for example, to use Google Spreadsheets as a source database",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "homepage": "https://github.com/eladb/node-csvdb",
   "repository": {
     "type": "git",
