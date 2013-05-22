@@ -13,7 +13,7 @@
     "node": ">= 0.6.8"
   },
   "dependencies": {
-    "csv": "0.0.13",
+    "csv": "0.3.0",
     "inferify": "0.0.6"
   },
   "devDependencies": {},
