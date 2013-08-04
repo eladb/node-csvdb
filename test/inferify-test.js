@@ -17,7 +17,7 @@ db.once('fetch', function() {
 
     //Check data types for a random row
     console.log("Total processing time: %dms", (new Date().getTime()-now));
-    
+
     var row = db.entries["key2293"];
     assert.equal(typeof row.boolean, "boolean");
     assert.equal(typeof row.string_with_booleans, "string");
