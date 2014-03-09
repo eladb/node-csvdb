@@ -18,17 +18,17 @@ var db = csvdb(tmpfile, function(err, e) {
     phone: 387383833,
     email: 'elad.benisrael@gmail.com',
     enabled: true,
-    'update-time': new Date('Sat Dec 03 2011 00:00:00 GMT+0200 (IST)') },
+    'update-time': new Date(Date.parse('2011-12-3')) },
   { first: '',
     last: 'last2-changed',
     phone: 654321,
     email: 'email2',
     enabled: true,
-    'update-time': new Date('Mon Jan 28 1980 00:00:00 GMT+0200 (IST)') },
+    'update-time': new Date(Date.parse('1980-1-28')) },
   { first: 'first3',
     last: 'another last',
     phone: 34567,
     email: 'email3-update1',
     enabled: false,
-    'update-time': new Date('Wed Mar 23 2011 23:30:00 GMT+0200 (IST)') } ]);
+    'update-time': new Date(Date.parse('2011-3-23 23:30:00')) } ]);
 });
